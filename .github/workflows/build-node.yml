@@ -1,0 +1,40 @@
+name: Build Node App
+
+on:
+  workflow_call:
+    inputs:
+      build-type:
+        description: 'Build type (single or matrix)'
+        required: true
+        default: 'single'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: 14
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Build
+      run: npm run build
+      if: ${{ github.event.inputs.build-type == 'single' }}
+
+    - name: Test
+      run: npm test
+      if: ${{ github.event.inputs.build-type == 'single' }}
+
+    - name: Archive build artifacts
+      if: ${{ github.event.inputs.build-type == 'single' }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: build-artifact
+        path: /node_modules
