@@ -45,5 +45,5 @@ jobs:
           context: .
           file: Docker/Dockerfile.${{ matrix.imageType }}
           push: true
-          tags: ${{ matrix.imageType }}
+          tags: ${{ env.REGISTRY }}/I${{ github.repository }}:${{ matrix.imageType }}
           labels: ${{ matrix.imageType }}
