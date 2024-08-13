@@ -1,6 +1,9 @@
 # Use an official Node.js runtime as the base image
 FROM node:lts-alpine
 
+# Create a group and user
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup && chown -R appuser:appgroup /app
+
 # Set the working directory in the container
 WORKDIR /app
 
@@ -9,6 +12,12 @@ COPY package*.json /app
 
 # Expose the port the app runs on
 EXPOSE 3000
+
+# Tell docker that all future commands should run as the appuser user
+USER appuser
+
+# Install dependencies
+RUN npm install --omit=dev
 
 # Start the application
 CMD ["node", "/app/index.js"]
