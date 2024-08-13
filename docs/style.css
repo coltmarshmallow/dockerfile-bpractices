@@ -1,41 +1,36 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  
-  header {
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
-  }
-  
-  h1 {
-    margin: 0;
-  }
-  
-  main {
-    padding: 20px;
-  }
-  
-  section {
-    margin-bottom: 20px;
-  }
-  
-  h2 {
-    margin-top: 20px;
-  }
-  
-  ul, ol {
-    margin-left: 20px;
-  }
-  
-  li {
-    margin-bottom: 10px;
-  }
-  
-  footer {
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
-  }  
+  margin: 0;
+  padding: 0;
+  background-image: url("images/containers.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center center;
+  background-attachment: fixed;
+  color: white;
+  font-family: Arial, sans-serif;
+  -webkit-text-stroke-color: antiquewhite;
+  -webkit-text-stroke-width: 0.5px;
+  padding: 20px;
+}
+
+main {
+  background-color: rgb(0, 0, 0);
+  opacity: 0.75;
+  border-radius: 15px 15px 15px 15px;
+  padding: 10px;
+}
+
+h1, h2, p, ul, li {
+  color: white;
+  font-size: larger;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  font-size: larger;
+}
+
+a:hover {
+  text-decoration: underline;
+}

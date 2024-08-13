@@ -3,35 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Dockerfile Best Practices</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background-image: url("images/containers.jpg");
-      background-repeat: no-repeat;
-      background-size: 100% 100%;
-      background-position: center center;
-      background-attachment: fixed;
-      color: white;
-      font-family: Arial, sans-serif;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-    }
-
-    h1, h2, p, ul, li {
-      color: white;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-    }
-
-    a {
-      color: white;
-      text-decoration: none;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
@@ -56,23 +28,54 @@
     </section>
 
     <section>
-      <h2>GitHub Pages Website</h2>
-      <p>You can find the GitHub Pages website for this project at <a href="https://coltmarshmallow.github.io/dockerfile-bpractices/">https://coltmarshmallow.github.io/dockerfile-bpractices/</a>. The website provides a detailed overview of the project, including the project summary, Dockerfile best practices, and examples. It also includes a live demo of the Dockerfile in action.</p>
+      <h2><a href="https://github.com/coltmarshmallow/dockerfile-bpractices/blob/main/Docker/Dockerfile.basic">Dockerfile.basic</a></h2>
+      <p>This Dockerfile sets up a basic Node.js runtime environment and allows you to build a Docker image for your Node.js application. It assumes that you have a package.json file in the root directory of your project, which contains the application dependencies.</p>
     </section>
 
     <section>
-      <h2>Getting Started</h2>
-      <p>To get started with this project, you can clone the repository and explore the Dockerfiles and documentation. You can also build and run the Docker images using the provided instructions. The GitHub Pages website provides additional information and resources to help you understand and utilize the Dockerfile best practices.</p>
-    </section>
+        <h2><a href="https://github.com/coltmarshmallow/dockerfile-bpractices/blob/main/Docker/Dockerfile.single">Dockerfile.single</a></h2>
 
-    <section>
-      <h2>License</h2>
-      <p>This project is licensed under the <a href="LICENSE">MIT License</a>.</p>
-    </section>
+          <p>Reduced Image Size: Used Alpine image as base to minimize image size.
+          Improved Security: Created a non-root user and group to avoid running as root, enhancing security.
+          Reduced Dev Dependencies: Used npm install --omit=dev to exclude dev dependencies from being packaged, reducing image size.
+          Faster Startup and Shutdown: Replaced CMD with node index.js to speed up container startup and shutdown times.
+          These optimizations aim to create a more efficient, secure, and lightweight Docker image.</p>
+      </section>
+
+      <section>
+        <h2><a href="https://github.com/coltmarshmallow/dockerfile-bpractices/blob/main/Docker/Dockerfile.multi">Dockerfile.multi</a></h2>
+        <p>Improvements Provided by This Multi-Stage Dockerfile
+
+          Separation of Build and Runtime Environments:
+              The Dockerfile uses two stages: build and final.
+              The build stage uses a larger Node.js image (node:14) to install dependencies and build the application.
+              The final stage uses a lightweight Alpine-based Node.js image (node:lts-alpine) to run the application.
+              This reduces the size of the final image, as it only includes the minimal dependencies needed to run the app, not to build it.
+      
+          Reduced Image Size:
+              By copying only the necessary files from the build stage to the final stage, the resulting Docker image is significantly smaller.
+              The use of an Alpine-based image further minimizes the final image size, leading to faster deployments and reduced storage requirements.
+      
+          Security Enhancements:
+              The Dockerfile creates a non-root user (appuser) in the final stage and runs the application under this user.
+              Running applications as non-root is a best practice in Docker to reduce the risk of privilege escalation if the container is compromised.
+      
+          Layer Caching and Build Optimization:
+              The Dockerfile structure allows for better caching of layers, especially during the build process.
+              By copying only the package.json and package-lock.json files before running npm install, Docker can cache the npm dependencies layer, avoiding reinstallation if those files haven't changed.
+      
+          Multi-Stage Benefits:
+              Using multi-stage builds helps in keeping the final image clean and free from unnecessary files (e.g., build artifacts that are not needed at runtime).
+              It also isolates the build environment from the runtime environment, ensuring that no build-time dependencies leak into the final image.
+      
+      Summary
+      
+      This Dockerfile effectively uses multi-stage builds to optimize the image size, improve security, and streamline the build process. The final Docker image is smaller, more secure, and better suited for production environments. </p>
+      </section>
   </main>
 
   <footer>
-    <p>&copy; 2022 Your Name</p>
+    <p>&copy; 2042 Joshua Lees</p>
   </footer>
 </body>
 </html>

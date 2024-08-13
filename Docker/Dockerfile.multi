@@ -17,11 +17,17 @@ FROM node:lts-alpine
 # Set the working directory in the container
 WORKDIR /app
 
+# Create a group and user
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup && chown -R appuser:appgroup /app
+
 COPY --from=build /app/index.js /app/node_modules /app/
 COPY --from=build /app/node_modules /app/
 
 # Expose the port the app runs on
 EXPOSE 3000
+
+# Tell docker that all future commands should run as the appuser user
+USER appuser
 
 # Start the application
 CMD ["node", "/app/index.js"]
