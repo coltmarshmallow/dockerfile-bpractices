@@ -2,58 +2,47 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Understanding Dockerfiles</title>
+  <title>Dockerfile Best Practices</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header>
-    <h1>Understanding Dockerfiles</h1>
+    <h1>Dockerfile Best Practices</h1>
   </header>
 
   <main>
     <section>
-      <h2>What is a Dockerfile?</h2>
-      <p>A Dockerfile is a text file that contains a set of instructions used to build a Docker image. It defines the steps necessary to create a containerized application or service.</p>
+      <h2>Project Summary</h2>
+      <p>This project demonstrates best practices for writing Dockerfiles. It provides a comprehensive guide on how to write efficient and reproducible Dockerfiles. The project includes examples, explanations, and best practices for building Docker images.</p>
+      <img src="images/containers.jpg" alt="Dockerfile Best Practices">
     </section>
 
     <section>
-      <h2>How does a Dockerfile work?</h2>
-      <p>When you build a Docker image using a Dockerfile, Docker reads the instructions line by line and executes them in the specified order. Each instruction performs a specific task, such as installing dependencies, copying files, setting environment variables, and running commands.</p>
-      <p>The Dockerfile is written in a specific syntax that defines the instructions and their arguments. It consists of instructions separated by newlines, with each instruction starting with a keyword followed by arguments.</p>
-      <p>During the build process, Docker creates a layer for each instruction and stores it in the Docker image. This allows for efficient caching and reuse of layers, making the build process faster and more efficient.</p>
-    </section>
-
-    <section>
-      <h2>Common Dockerfile instructions</h2>
+      <h2>Dockerfile Aspect</h2>
+      <p>The core of this project is the Dockerfile. It showcases various Dockerfile instructions and their usage in building Docker images. The project covers topics such as:</p>
       <ul>
-        <li><code>FROM</code>: Specifies the base image for the Docker image.</li>
-        <li><code>RUN</code>: Executes a command in the Docker image.</li>
-        <li><code>COPY</code>: Copies files or directories from the host machine to the Docker image.</li>
-        <li><code>WORKDIR</code>: Sets the working directory within the Docker image.</li>
-        <li><code>EXPOSE</code>: Exposes a port within the Docker image.</li>
-        <li><code>CMD</code>: Specifies the command to run when the Docker container starts.</li>
+        <li>Understanding the Dockerfile syntax and structure</li>
+        <li>Using common Dockerfile instructions like <code>FROM</code>, <code>RUN</code>, <code>COPY</code>, <code>WORKDIR</code>, <code>EXPOSE</code>, and <code>CMD</code></li>
+        <li>Best practices for writing Dockerfiles, including minimizing image size, leveraging layer caching, and using multi-stage builds</li>
+        <li>Examples of Dockerfiles for different use cases, such as web applications, microservices, and development environments</li>
       </ul>
     </section>
 
     <section>
-      <h2>Best practices for writing Dockerfiles</h2>
-      <ul>
-        <li>Use a minimal base image to keep the image size small.</li>
-        <li>Minimize the number of layers by combining instructions where possible.</li>
-        <li>Use multi-stage builds to separate build and runtime dependencies.</li>
-        <li>Use cache efficiently by leveraging the layer caching mechanism.</li>
-        <li>Use environment variables to parameterize the Dockerfile and make it more flexible.</li>
-      </ul>
+      <h2>GitHub Pages Website</h2>
+      <p>You can find the GitHub Pages website for this project at <a href="https://coltmarshmallow.github.io/dockerfile-bpractices/">https://coltmarshmallow.github.io/dockerfile-bpractices/</a>. The website provides a detailed overview of the project, including the project summary, Dockerfile best practices, and examples. It also includes a live demo of the Dockerfile in action.</p>
     </section>
 
     <section>
-      <h2>Conclusion</h2>
-      <p>Dockerfiles are a powerful tool for defining the steps necessary to build Docker images. By understanding how Dockerfiles work, you can create efficient and reproducible containerized applications. With the right knowledge and practices, you can streamline your development workflow and deploy your applications with ease.</p>
+      <h2>Getting Started</h2>
+      <p>To get started with this project, you can clone the repository and explore the Dockerfiles and documentation. You can also build and run the Docker images using the provided instructions. The GitHub Pages website provides additional information and resources to help you understand and utilize the Dockerfile best practices.</p>
+    </section>
+
+    <section>
+      <h2>License</h2>
+      <p>This project is licensed under the <a href="LICENSE">MIT License</a>.</p>
     </section>
   </main>
 
-  <footer>
-    <p>&copy; 2022 Your Name</p>
-  </footer>
 </body>
 </html>
